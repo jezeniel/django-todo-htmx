@@ -1,0 +1,22 @@
+<div hx-target="this"
+    class="flex border rounded-md p-4 border-slate-200 justify-between shadow-md mb-4 fade-out fade-in">
+    <div class="flex flex-row items-center">
+        <div class="mx-2">
+            {% if item.is_done %}
+            <input type="checkbox" hx-post="{% url 'todo:undone' item.pk %}" hx-swap="outerHTML"
+                class="checkbox checkbox-lg checkbox-accent" checked>
+            {% else %}
+            <input type="checkbox" hx-post="{% url 'todo:done' item.pk %}" hx-swap="outerHTML"
+                class="checkbox checkbox-lg checkbox-accent">
+            {% endif %}
+        </div>
+        <span
+            class="inline-block text-lg align-middle {% if item.is_done %}line-through text-slate-400{% else %}text-slate-700{% endif %}">{{item.description}}</span>
+    </div>
+    <button class="btn btn-circle btn-outline btn-error" hx-delete="{% url 'todo:items' item.pk %}"
+        hx-swap="delete swap:0.5s" hx-confirm="Are you sure you want to delete?">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+</div>

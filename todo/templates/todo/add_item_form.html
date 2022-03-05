@@ -1,0 +1,30 @@
+{% if item %}
+<div hx-swap-oob="afterbegin:#todo-items">
+    {% include "todo/item.html" with item=item %}
+</div>
+{% endif %}
+<form hx-post="{% url 'todo:items-list' %}" hx-target="this" hx-swap="outerHTML" class="flex justify-between my-4">
+    <div class="form-control flex-1 mr-2">
+        {% if form.description.errors %}
+        <input type="text" class="input input-bordered input-error" placeholder="What to do?"
+            name="{{form.description.name}}" autocomplete="off" />
+        <label class="label">
+            {% for error in form.description.errors %}
+            <span class="label-text-alt text-error">{{error|escape}}</span>
+            {% endfor %}
+        </label>
+        {% else %}
+        <input type="text" class="input input-bordered" placeholder="What to do?" name="{{form.description.name}}"
+            autocomplete="off" />
+        {% endif %}
+    </div>
+    <div class="form-control">
+        <button class="btn bg-success">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Add Item
+        </button>
+    </div>
+</form>

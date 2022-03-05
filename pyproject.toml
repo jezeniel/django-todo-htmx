@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "django-todo-htmx"
+version = "0.1.0"
+description = "Simple todo app using django + htmx"
+authors = ["Jezeniel Zapanta <jezeniel.zapanta@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^4.0.2"
+django-htmx = "^1.8.0"
+django-extensions = "^3.1.5"
+django-crispy-forms = "^1.14.0"
+crispy-tailwind = "^0.5.0"
+django-tailwind = "^3.1.1"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

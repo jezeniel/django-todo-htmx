@@ -1,0 +1,34 @@
+{% extends "todo/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+<style>
+    .fade-out.htmx-swapping {
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+    }
+
+    .fade-in.htmx-added {
+        opacity: 0;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-col p-16 items-center justify-items-center">
+    <h1 class="font-medium text-3xl my-2">Todo App</h1>
+    <div class="flex flex-col w-full max-w-xl">
+        {% include "todo/add_item_form.html" %}
+        <div id="todo-items">
+            {% for i in items %}
+            {% include "todo/item.html" with item=i %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

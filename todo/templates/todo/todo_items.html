@@ -1,0 +1,5 @@
+<div id="todo-items">
+    {% for i in items %}
+    {% include "todo/item.html" with item=i %}
+    {% endfor %}
+</div>
